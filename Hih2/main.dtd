@@ -1,0 +1,28 @@
+<!ELEMENT main (content,footer)>
+<!ELEMENT content (list,piwa,informations)>
+<!ELEMENT list (listelement+)>
+<!ELEMENT listelement (name,procent)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT procent (#PCDATA)>
+<!ELEMENT piwa (piwo+)>
+<!ELEMENT piwo (#PCDATA|img|styl|nazwa|browar|procent|cena|blg)*>
+<!ELEMENT img EMPTY>
+<!ELEMENT styl (#PCDATA)>
+<!ELEMENT nazwa (#PCDATA)>
+<!ELEMENT browar (#PCDATA)>
+<!ELEMENT blg (#PCDATA)>
+<!ELEMENT cena (#PCDATA)>
+<!ELEMENT informations (linki)>
+<!ELEMENT linki (link*)>
+<!ELEMENT link (#PCDATA)>
+<!ELEMENT footer (author)>
+<!ELEMENT author (name,surname)>
+<!ELEMENT surname (#PCDATA)>
+
+<!ENTITY % id "id CDATA">
+<!ATTLIST content %id; "content">
+<!ATTLIST img source CDATA #REQUIRED>
+<!ATTLIST link source CDATA #REQUIRED>
+<!ATTLIST piwo %id; #IMPLIED>
+<!ATTLIST listelement num CDATA #IMPLIED>
+<!ATTLIST piwo kind (FGorna|FDolna) #REQUIRED>

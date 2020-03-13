@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:element name="main">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="content" type="ContentType"/>
+        <xsd:element name="footer" type="FooterType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:attribute name="source" type="LongString"/>
+  <xsd:attribute  name="id" type="ShortString"/>
+  
+  <xsd:complexType name="FooterType">
+    <xsd:sequence>
+      <xsd:element name="author">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="name">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="2"/>
+                  <xsd:maxLength value="15"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="surname">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="2"/>
+                  <xsd:maxLength value="20"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="ContentType">
+    <xsd:sequence> 
+      <xsd:element name="list" type="ListType"/>    
+      <xsd:element name="piwa" type="Beers"/>
+      <xsd:element name="informations">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="linki" type="LinkType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute ref="id" use="optional"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="ListType">
+      <xsd:sequence>
+        <xsd:element name="listelement" maxOccurs="unbounded" minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="name" type="MediumString"/>
+              <xsd:element name="procent" type="xsd:float"/>
+            </xsd:sequence>
+            <xsd:attribute name="num" type="xsd:int"/>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="Beers">
+    <xsd:sequence>
+      <xsd:element name="piwo" type="BeerType" maxOccurs="unbounded" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="BeerType" mixed="true">
+    <xsd:group ref="BeerGroup" />
+    <xsd:attribute ref="id" use="optional"/>
+    <xsd:attribute name="kind" >
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="FGorna"/>
+          <xsd:enumeration value="FDolna"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      </xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="FermentationType">
+    
+  </xsd:complexType>
+  
+  <xsd:group name="BeerGroup">
+    <xsd:sequence>
+      <xsd:element name="img">
+        <xsd:complexType>
+          <xsd:attribute name="source" type="MediumString"/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="styl" type="MediumString"/>
+      <xsd:element name="nazwa" type="MediumString"/>
+      <xsd:element name="browar" type="MediumString"/>
+      <xsd:element name="blg" >
+        <xsd:simpleType>
+          <xsd:union memberTypes="xsd:float empty"/>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="procent" type="ProcentType"/>
+      <xsd:element name="cena" type="PriceType"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="LinkType">
+    <xsd:sequence>
+      <xsd:element name="link" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+              <xsd:attribute ref="source" use="required"/>
+            </xsd:extension>
+          </xsd:simpleContent>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="InformationType">
+    <xsd:sequence>
+      <xsd:element name="links" type ="LinkType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="empty">
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="ImgType">
+    <xsd:attribute ref="source" use="required"/>
+  </xsd:complexType>
+
+  <xsd:simpleType name="PriceType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="\p{Nd}+(\.\p{Nd}\p{Nd})?[ ][p][l][n]"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="ProcentType">
+    <xsd:restriction base="xsd:float">
+      <xsd:minExclusive value="0"/>
+      <xsd:maxExclusive value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="LongString">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="10"/>
+      <xsd:maxLength value="40"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="MediumString">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="2"/>
+      <xsd:maxLength value="25"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="ShortString">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="15"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE main SYSTEM "main.dtd">
+<main >
+
+  <content id="content">
+    
+    <list>
+      <listelement num="1">
+        <name>IPA</name>
+        <procent>5</procent> 
+      </listelement>
+      
+      <listelement num="2">
+        <name>APA</name>
+        <procent>6</procent>
+      </listelement>
+      
+      <listelement num="3">
+        <name>Porter</name>
+        <procent>9</procent>
+      </listelement>
+      
+      <listelement num="4">
+        <name>Ris</name>
+        <procent>11</procent>
+      </listelement>
+
+      <listelement num="5">
+        <name>Lager Europejski</name>
+        <procent>4</procent>
+      </listelement>
+
+      <listelement num="6">
+        <name>Witbier</name>
+        <procent>3.6</procent>
+      </listelement>
+
+      <listelement num="7">
+        <name>Stout</name>
+        <procent>7.6</procent>
+      </listelement>
+
+      <listelement num="8">
+        <name>Porter Bałtycki</name>
+        <procent>9.6</procent>
+      </listelement>
+    </list> 
+    
+    <piwa>
+      
+      <piwo  id="1" kind="FGorna">
+        <img source="FES.jpg"></img>
+        <styl>Foreign Extra Stout</styl>
+        <nazwa>Havana Stout</nazwa>
+        <browar>Pinta</browar>
+        <blg>16.5</blg>
+        <procent>6.9</procent>
+        <cena>10.80 pln</cena>
+    </piwo>
+
+      <piwo id="2" kind="FGorna">
+        <img source="IS.jpg"></img>
+        <styl>Imperial Stout</styl>
+        <nazwa>Illusion</nazwa>
+        <browar>Rockmill</browar>
+        <blg>28</blg>
+        <procent>12</procent>
+        <cena>16.20 pln</cena>
+      </piwo>
+
+      <piwo id="3" kind ="FGorna">
+       <img source="ABW.jpg"></img>
+       <styl>American Barley Wine</styl>
+       <nazwa>Hard Bride</nazwa>
+       <browar>Alebrowar</browar>
+       <blg>24</blg>
+       <procent>9.8</procent>
+       <cena>12.60 pln</cena>
+      </piwo>
+
+      <piwo id="3" kind="FDolna">
+        brak podanego blg
+        <img source="PB.jpg"></img>
+        <styl>Porter Bałtycki</styl>
+        <nazwa>DEEP DARK SEA</nazwa>
+        <browar>Brokreacja</browar>
+        <blg></blg>
+        <procent>10.1</procent>
+        <cena>12.60 pln</cena>
+      </piwo>
+      
+    </piwa>
+
+    <informations>
+      <linki>
+        <link source="https://www.ratebeer.com/">Ratebeer</link>
+        <link source="https://birofilia.org/">Birofilia</link>
+        <link source="https://blog.kopyra.com/">Blog Piwny Tomasza Kopyry</link>
+        <link source="https://untappd.com/">untappd</link>
+      </linki>
+    </informations>
+  </content>
+  
+  <footer>
+    <author>
+      <name>Maciek</name>
+      <surname>Surowiec</surname>
+    </author>
+  </footer>
+</main>

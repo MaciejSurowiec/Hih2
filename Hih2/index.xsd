@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="main">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="content" />
+        <xs:element ref="footer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="content">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="list" />
+        <xs:element ref="piwa" />
+        <xs:element ref="informations" />
+      </xs:sequence>
+      <xs:attribute default="content" name="id" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="listelement" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listelement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name" />
+        <xs:element ref="procent" />
+      </xs:sequence>
+      <xs:attribute name="num" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="name" type="xs:string" />
+  <xs:element name="procent" type="xs:string" />
+  <xs:element name="piwa">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="piwo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="piwo">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="img" />
+        <xs:element ref="styl" />
+        <xs:element ref="nazwa" />
+        <xs:element ref="browar" />
+        <xs:element ref="procent" />
+        <xs:element ref="cena" />
+        <xs:element ref="blg" />
+      </xs:choice>
+      <xs:attribute name="id" type="xs:string" />
+      <xs:attribute name="kind" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="FGorna" />
+            <xs:enumeration value="FDolna" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="img">
+    <xs:complexType>
+      <xs:attribute name="source" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="styl" type="xs:string" />
+  <xs:element name="nazwa" type="xs:string" />
+  <xs:element name="browar" type="xs:string" />
+  <xs:element name="blg" type="xs:string" />
+  <xs:element name="cena" type="xs:string" />
+  <xs:element name="informations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="linki" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="linki">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="link" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="link">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="source" type="xs:string" use="required" />
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="footer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="author" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="author">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name" />
+        <xs:element ref="surname" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="surname" type="xs:string" />
+</xs:schema>
